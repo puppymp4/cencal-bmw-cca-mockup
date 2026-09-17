@@ -1,0 +1,74 @@
+{
+  "_README": "Single source of truth for the calendar. 'recurring' events generate themselves forever, so the site never goes stale. Add confirmed one-off dates to 'dated'. 'annual' holds the season anchors whose dates are set each year. See how-to-update-events.md.",
+
+  "timezone": "America/Los_Angeles",
+
+  "recurring": [
+    {
+      "id": "kars-and-koffee",
+      "title": "Kars & Koffee",
+      "rule": { "nth": 2, "weekday": 6 },
+      "ruleText": "2nd Saturday of every month",
+      "start": "08:00",
+      "end": "12:00",
+      "venue": "Starbucks across from Woodward Park",
+      "address": "9423 N Fort Washington Rd, Fresno, CA 93730",
+      "blurb": "Our monthly morning meet. Coffee, cars, and whoever shows up. All makes are welcome, so bring the BMW or bring the thing you are actually working on.",
+      "open": "All makes welcome",
+      "cost": "Free"
+    }
+  ],
+
+  "dated": [],
+
+  "annual": [
+    {
+      "id": "euro-car-show",
+      "title": "Euro Car Show",
+      "window": "June",
+      "venue": "Clovis Community College",
+      "address": "Entrance on International between Willow and Chestnut, Clovis, CA",
+      "blurb": "The chapter's own show. Awards across multiple categories, open to European makes, run by the board and chapter volunteers.",
+      "cost": "$20 entry",
+      "open": "Open to the public",
+      "image": "assets/img/event-euro-car-show.webp",
+      "alt": "A Porsche, a red BMW and a blue coupe parked in a row at a Central California chapter show"
+    },
+    {
+      "id": "track-days",
+      "title": "High Performance Driving School",
+      "window": "Spring",
+      "venue": "Buttonwillow Raceway Park",
+      "address": "Buttonwillow, CA, run with the San Diego chapter",
+      "blurb": "Two days of instructed track time with the San Diego chapter. Classroom sessions, an assigned instructor, and real lapping time in your own car.",
+      "cost": "Priced per event",
+      "open": "BMW CCA members only",
+      "image": "assets/img/event-track-day.webp",
+      "alt": "A white BMW E36 race car with a rear wing parked alongside other chapter cars"
+    },
+    {
+      "id": "legends-of-the-autobahn",
+      "title": "Legends of the Autobahn",
+      "window": "August, Monterey Car Week",
+      "venue": "Pacific Grove Golf Links",
+      "address": "77 Asilomar Blvd, Pacific Grove, CA 93950",
+      "blurb": "The national German-car concours during Monterey Car Week. Chapter members caravan over from the valley every year.",
+      "cost": "Admission packages sold through BMW CCA",
+      "open": "BMW CCA members only",
+      "image": "assets/img/community-corral.webp",
+      "alt": "Chapter BMWs parked together in a club corral at a racetrack"
+    },
+    {
+      "id": "toy-drive",
+      "title": "Kars & Koffee Toy Drive",
+      "window": "December",
+      "venue": "Starbucks across from Woodward Park",
+      "address": "9423 N Fort Washington Rd, Fresno, CA 93730",
+      "blurb": "The last meet of the year. Same time and place as any Kars & Koffee, except everyone brings a toy to donate to Valley Children's Hospital.",
+      "cost": "Bring a toy",
+      "open": "All makes welcome",
+      "image": "assets/img/community-meet.webp",
+      "alt": "A red BMW M3 parked at a Cen Cal chapter meet with members talking in the background"
+    }
+  ]
+}
