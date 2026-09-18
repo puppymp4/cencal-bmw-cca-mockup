@@ -68,8 +68,14 @@
     <div class="wrap">
       <span><strong>Kars &amp; Koffee</strong> &nbsp; <span data-next-short>Second Saturday, 8 AM to noon</span> &nbsp;·&nbsp; <span class="n" data-next-days></span></span>
       <span class="acts">
-        <a data-next-cal href="/events">Add to calendar</a>
-        <a data-next-map href="https://www.google.com/maps/search/?api=1&amp;query=9423%20N%20Fort%20Washington%20Rd%20Fresno%20CA%2093730" target="_blank" rel="noopener">Directions</a>
+        <div class="cal cal--right">
+          <button class="pill sm" type="button" data-cal-toggle aria-haspopup="menu" aria-expanded="false" aria-controls="cal-next">Add to calendar</button>
+          <div class="cal-menu" id="cal-next" role="menu" hidden>
+            <a role="menuitem" data-next-apple href="/events">Apple Calendar</a>
+            <a role="menuitem" data-next-google href="/events">Google Calendar</a>
+          </div>
+        </div>
+        <a class="pill sm" data-next-map href="https://www.google.com/maps/search/?api=1&amp;query=9423%20N%20Fort%20Washington%20Rd%20Fresno%20CA%2093730" target="_blank" rel="noopener">Directions</a>
       </span>
     </div>
   </div>

@@ -41,7 +41,8 @@ contact.html        form, direct contacts, officers, FAQ
 404.html            custom not-found page
 events.json         the only file you edit to change the calendar
 styles.css          design system
-main.js             calendar engine, nav, gallery filter, form validation
+main.js             calendar engine, nav, add-to-calendar menu, gallery filter, form validation
+api/ics.js          Vercel function: serves a per-event .ics as text/calendar for Apple Calendar
 assets/img/         optimised WebP images
 concepts/           the four original homepage concepts, kept for reference
 ```

@@ -104,6 +104,51 @@
       '&location=' + encodeURIComponent((ev.venue ? ev.venue + ', ' : '') + (ev.address || ''));
   }
   function mapUrl(ev) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent((ev.venue ? ev.venue + ' ' : '') + (ev.address || '')); }
+  // Apple Calendar: a real .ics served by /api/ics so iOS opens its Add to Calendar sheet
+  function icsUrl(ev) {
+    var d = ev.date, file = ev.id + '-' + d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    return '/api/ics?' + [
+      'title=' + encodeURIComponent(ev.title + ' - BMW CCA Cen Cal'),
+      'start=' + stamp(ev.date), 'end=' + stamp(ev.endDate),
+      'loc=' + encodeURIComponent((ev.venue ? ev.venue + ', ' : '') + (ev.address || '')),
+      'desc=' + encodeURIComponent(ev.blurb || ''),
+      'uid=' + encodeURIComponent(file), 'file=' + encodeURIComponent(file)
+    ].join('&');
+  }
+
+  /* "Add to calendar" button that asks Google or Apple */
+  var calSeq = 0;
+  function calMenu(ev, cls) {
+    var id = 'cal-' + (++calSeq);
+    return '<div class="cal' + (cls ? ' ' + cls : '') + '">' +
+      '<button class="pill sm" type="button" data-cal-toggle aria-haspopup="menu" aria-expanded="false" aria-controls="' + id + '">Add to calendar</button>' +
+      '<div class="cal-menu" id="' + id + '" role="menu" hidden>' +
+        '<a role="menuitem" href="' + icsUrl(ev) + '">Apple Calendar</a>' +
+        '<a role="menuitem" href="' + googleCalUrl(ev) + '" target="_blank" rel="noopener">Google Calendar</a>' +
+      '</div></div>';
+  }
+  function closeCalMenus(except) {
+    document.querySelectorAll('[data-cal-toggle][aria-expanded="true"]').forEach(function (b) {
+      if (b === except) return;
+      b.setAttribute('aria-expanded', 'false');
+      var m = document.getElementById(b.getAttribute('aria-controls')); if (m) m.hidden = true;
+    });
+  }
+  function initCalMenus() {
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-cal-toggle]');
+      closeCalMenus(t);
+      if (!t) return;
+      var m = document.getElementById(t.getAttribute('aria-controls')); if (!m) return;
+      var open = m.hidden; m.hidden = !open; t.setAttribute('aria-expanded', String(open));
+      if (open) { var f = m.querySelector('a'); if (f) f.focus(); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var openBtn = document.querySelector('[data-cal-toggle][aria-expanded="true"]');
+      closeCalMenus(null); if (openBtn) openBtn.focus();
+    });
+  }
 
   /* ---------------- render ---------------- */
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -118,7 +163,7 @@
         '<div class="event-meta" style="margin-top:10px">' + (ev.open ? '<span class="badge badge--recurring">' + esc(ev.open) + '</span>' : '') + (ev.cost ? '<span class="badge">' + esc(ev.cost) + '</span>' : '') + '</div>' +
       '</div>' +
       '<div class="event-actions">' +
-        '<a class="pill sm" href="' + googleCalUrl(ev) + '" target="_blank" rel="noopener">Add to calendar</a>' +
+        calMenu(ev) +
         '<a class="pill sm" href="' + mapUrl(ev) + '" target="_blank" rel="noopener">Directions</a>' +
       '</div></article>';
   }
@@ -142,14 +187,15 @@
     set('[data-next-short]', function (el) { el.textContent = fmtShort(ev.date) + ', ' + fmtTime(ev.start) + ' to ' + fmtTime(ev.end); });
     set('[data-next-days]', function (el) { el.textContent = days <= 0 ? 'today' : 'in ' + days + ' day' + (days === 1 ? '' : 's'); });
     set('[data-next-btn]', function (el) { el.textContent = 'Next meet, ' + fmtShort(ev.date); });
-    set('[data-next-cal]', function (el) { el.href = googleCalUrl(ev); el.target = '_blank'; el.rel = 'noopener'; });
+    set('[data-next-google]', function (el) { el.href = googleCalUrl(ev); el.target = '_blank'; el.rel = 'noopener'; });
+    set('[data-next-apple]', function (el) { el.href = icsUrl(ev); });
     set('[data-next-map]', function (el) { el.href = mapUrl(ev); el.target = '_blank'; el.rel = 'noopener'; });
   }
 
   function initCalendar() {
     var lists = document.querySelectorAll('[data-events]');
     var annual = document.querySelector('[data-annual]');
-    var inline = document.querySelector('[data-next-when],[data-next-short],[data-next-days],[data-next-btn],[data-next-cal],[data-next-map]');
+    var inline = document.querySelector('[data-next-when],[data-next-short],[data-next-days],[data-next-btn],[data-next-google],[data-next-apple],[data-next-map]');
     var rules = document.querySelectorAll('[data-rule-text]');
     if (!lists.length && !annual && !inline) return;
 
@@ -214,6 +260,6 @@
 
   function initYear() { document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); }); }
 
-  function boot() { initNav(); initCalendar(); initGallery(); initReveal(); initForms(); initYear(); }
+  function boot() { initNav(); initCalendar(); initCalMenus(); initGallery(); initReveal(); initForms(); initYear(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
