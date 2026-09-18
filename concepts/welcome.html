@@ -10,8 +10,8 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link rel="preload" as="image" href="/assets/img/hero-wide-m3-people.webp" media="(min-width: 700px)">
-<link rel="preload" as="image" href="/assets/img/hero-wide-m3-people-sm.webp" media="(max-width: 699px)">
+<link rel="preload" as="image" media="(orientation: landscape)" imagesrcset="/assets/img/hero-b-crowd-desk-sm.webp 1200w, /assets/img/hero-b-crowd-desk.webp 1706w" imagesizes="100vw">
+<link rel="preload" as="image" media="(orientation: portrait)" imagesrcset="/assets/img/hero-b-crowd-mob-sm.webp 810w, /assets/img/hero-b-crowd-mob.webp 1080w, /assets/img/hero-b-crowd-mob-lg.webp 1706w" imagesizes="100vw">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap">
 <style>
 :root{
@@ -52,10 +52,12 @@ p{margin:0 0 16px;max-width:60ch}
 
 /* hero */
 .hero{position:relative;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;animation:kb 22s ease-in-out infinite alternate;will-change:transform}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-pos-l,50% 55%);animation:kb 22s ease-in-out infinite alternate;will-change:transform}
+@media(orientation:portrait){.hero img{object-position:var(--hero-pos-p,42% 50%);animation-name:kbp}}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+@keyframes kbp{from{transform:scale(1)}to{transform:scale(1.05)}}
 @media(prefers-reduced-motion:reduce){.hero img{animation:none}}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.05) 70%,rgba(0,0,0,.35) 100%);z-index:1}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.86) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.08) 70%,rgba(0,0,0,.35) 100%);z-index:1}
 .hero-body{position:relative;z-index:2;width:100%;padding-bottom:64px}
 @media(min-width:900px){.hero-body{padding-bottom:88px}}
 .hero h1{font-size:clamp(46px,9vw,124px);line-height:.94;letter-spacing:-0.035em;max-width:11ch;margin:18px 0 22px;font-weight:500}
@@ -122,6 +124,11 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
 .cx a{color:#555;font-size:12px;font-weight:700;min-width:36px;min-height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 12px}
 .cx a:hover{color:#000}
 .cx a.on{background:#111;color:#fff}
+/* hero option switcher (review only) */
+.hx{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);z-index:90;display:flex;gap:2px;align-items:center;padding:3px 6px 3px 12px;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.18);border-radius:999px;backdrop-filter:blur(8px);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.hx a{color:rgba(255,255,255,.7);font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;min-height:30px;padding:0 10px;display:inline-flex;align-items:center;border-radius:999px;margin-left:4px}
+.hx a:hover{color:#fff}
+.hx a.on{background:#fff;color:#000}
 </style>
 </head>
 <body>
@@ -140,9 +147,13 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
 <main id="top">
 
   <section class="hero">
-    <picture>
-      <source media="(max-width: 699px)" srcset="/assets/img/hero-wide-m3-people-sm.webp">
-      <img src="/assets/img/hero-wide-m3-people.webp" width="2000" height="1250" fetchpriority="high"
+    <!-- art directed: portrait viewports get the full-frame portrait photo, landscape gets a 16:10 band -->
+    <picture data-hero-pic>
+      <source media="(orientation: portrait)" sizes="100vw"
+              srcset="/assets/img/hero-b-crowd-mob-sm.webp 810w, /assets/img/hero-b-crowd-mob.webp 1080w, /assets/img/hero-b-crowd-mob-lg.webp 1706w">
+      <img src="/assets/img/hero-b-crowd-desk.webp" sizes="100vw"
+           srcset="/assets/img/hero-b-crowd-desk-sm.webp 1200w, /assets/img/hero-b-crowd-desk.webp 1706w"
+           width="1706" height="1066" fetchpriority="high" decoding="async"
            alt="A red BMW M3 parked at a Cen Cal chapter meet in Fresno with members talking behind it">
     </picture>
     <div class="hero-body wrap">
@@ -226,6 +237,11 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
   </div>
 </footer>
 
+<nav class="hx" aria-label="Hero photo options">Hero
+  <a href="?hero=crowd" data-hero-opt="crowd">1 Crowd</a>
+  <a href="?hero=row" data-hero-opt="row">2 Row</a>
+  <a href="?hero=m6" data-hero-opt="m6">3 M6</a>
+</nav>
 <nav class="cx" aria-label="Concept switcher">
   <a href="/concepts">Concepts</a>
   <a href="/concepts/magazine">A</a>
@@ -236,6 +252,33 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
 
 <script>
 (function(){
+  /* hero options, review only. The chosen one gets hardcoded in the final build. */
+  var HEROES={
+    crowd:{desk:['hero-b-crowd-desk-sm.webp 1200w','hero-b-crowd-desk.webp 1706w'],deskSrc:'hero-b-crowd-desk.webp',w:1706,h:1066,
+           mob:['hero-b-crowd-mob-sm.webp 810w','hero-b-crowd-mob.webp 1080w','hero-b-crowd-mob-lg.webp 1706w'],
+           posL:'50% 55%',posP:'42% 50%',
+           alt:'A red BMW M3 parked at a Cen Cal chapter meet in Fresno with members talking behind it'},
+    row:{desk:['hero-b-row-desk-sm.webp 1200w','hero-b-row-desk.webp 1706w'],deskSrc:'hero-b-row-desk.webp',w:1706,h:1066,
+         mob:['hero-b-row-mob-sm.webp 810w','hero-b-row-mob.webp 1080w','hero-b-row-mob-lg.webp 1706w'],
+         posL:'50% 62%',posP:'58% 50%',
+         alt:'A row of BMW M3s parked nose out at a Kars and Koffee meet, with a member standing beside them'},
+    m6:{desk:['hero-b-m6-desk-sm.webp 1200w','hero-b-m6-desk.webp 2400w'],deskSrc:'hero-b-m6-desk.webp',w:2400,h:1600,
+        mob:['hero-b-m6-mob-sm.webp 720w','hero-b-m6-mob.webp 936w'],
+        posL:'50% 45%',posP:'50% 50%',
+        alt:'A red BMW M6 Gran Coupe parked in morning light at a Cen Cal chapter meet'}
+  };
+  var key=new URLSearchParams(location.search).get('hero')||'crowd'; if(!HEROES[key])key='crowd';
+  var H=HEROES[key],base='/assets/img/';
+  var pic=document.querySelector('[data-hero-pic]'),src=pic.querySelector('source'),img=pic.querySelector('img');
+  if(key!=='crowd'){
+    src.srcset=H.mob.map(function(s){return base+s}).join(', ');
+    img.srcset=H.desk.map(function(s){return base+s}).join(', ');
+    img.src=base+H.deskSrc; img.width=H.w; img.height=H.h; img.alt=H.alt;
+  }
+  document.documentElement.style.setProperty('--hero-pos-l',H.posL);
+  document.documentElement.style.setProperty('--hero-pos-p',H.posP);
+  document.querySelectorAll('[data-hero-opt]').forEach(function(a){a.classList.toggle('on',a.dataset.heroOpt===key)});
+
   var nav=document.getElementById('nav');
   function onScroll(){nav.classList.toggle('solid',window.scrollY>40)}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
