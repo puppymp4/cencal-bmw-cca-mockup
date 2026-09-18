@@ -18,69 +18,49 @@ who found the chapter online saw a club that looked dead.
 So the calendar here does not depend on anyone typing dates in. **Kars & Koffee is defined as a
 rule, not a list**: second Saturday of every month, 8 AM to noon. The page computes the next
 twelve occurrences at load. It will still be correct in 2030 with nobody touching it.
+See `how-to-update-events.md`.
 
-The four annual events (Euro Car Show, Buttonwillow driving school, Legends of the Autobahn,
-December toy drive) are listed as season anchors with their venue and cost, and are labelled as
-dates announced each season, which is true and does not go stale either.
+## Design
+
+The "Welcome" direction, chosen from four concepts (still viewable under `/concepts/`).
+Dark, photo-led, one accent. Full-screen hero with art-directed crops: portrait viewports get
+the full-frame portrait photo, landscape viewports get a 16:10 band, `srcset` covers 2x and 3x
+phones and iPad portrait. Headline set in Clash Display Bold, everything else in Satoshi.
 
 ## Stack
 
-Plain HTML, CSS and JavaScript. No build step, no framework, no dependencies.
-Drop it on any static host. Deployed on Vercel.
+Plain HTML, CSS and JavaScript. No build step, no dependencies. Deployed on Vercel with
+`cleanUrls`, so links are `/events`, `/gallery`, `/join`, `/contact`.
 
 ```
 index.html          home
-events.html         full calendar + season anchors
+events.html         next twelve dates + season anchors + venues
 gallery.html        filterable photo grid (BMW / all makes)
-join.html           membership explainer
-contact.html        form + officers
+join.html           membership explainer + merch
+contact.html        form, direct contacts, officers, FAQ
 404.html            custom not-found page
 events.json         the only file you edit to change the calendar
 styles.css          design system
 main.js             calendar engine, nav, gallery filter, form validation
-assets/img/         38 optimised WebP images (2.9 MB total)
+assets/img/         optimised WebP images
+concepts/           the four original homepage concepts, kept for reference
 ```
 
 ## Local preview
 
-The calendar loads `events.json` with `fetch`, so it needs a real server. Opening `index.html`
-straight off the disk will show the fallback message.
+The calendar loads `/events.json` with `fetch` and links are root-absolute, so it needs a
+server at the site root (not `file://`):
 
 ```bash
 npx serve .
-# or
-python -m http.server 8000
 ```
 
-## Changing the calendar
+## Handoff notes
 
-See `how-to-update-events.md`. Short version: `events.json` is the only file to touch.
-
-## Design
-
-Palette and motif come from the chapter's own logo: the Sierra ridgeline, the valley crop rows,
-and the blue river arc, on an asphalt-dark base with the BMW M tri-stripe used as a keyline.
-Type is Archivo (variable width axis) with JetBrains Mono for dates and stats.
-
-Checked against the Rift Media UI/UX Pro Max pre-launch gate:
-
-- No horizontal overflow at 320 / 360 / 375 / 390 / 428 / 768 / 1024 / 1440 / 1920
-- WCAG AA contrast passes on every text node on every page
-- One h1 per page, no heading level skips
-- All images have alt text and intrinsic width/height (no layout shift)
-- Touch targets 44px minimum
-- Keyboard: skip link, visible focus rings, focus trap in the mobile menu, Esc to close
-- `prefers-reduced-motion` respected throughout
-- Every page under the 3 MB weight budget
-
-## Notes for handoff
-
-- The contact form posts to FormSubmit and currently delivers to **rift.clb.media@gmail.com**.
-  Change the `action` in `contact.html` to the chapter's address at handoff.
-- The `.spec-note` block in each footer is the concept-build disclosure. Remove it when the
-  chapter takes ownership.
-- Photography is by chapter members, credited @OG559Photo and @CG559Photo in the footer and
-  on the gallery page. Confirm permission before going live on the chapter's own domain.
-- `sitemap.xml` and `robots.txt` point at the preview subdomain. Repoint both to
-  cencalbmwcca.com at handoff, and update the `canonical` tags (they already point at the
-  real domain).
+- Contact form posts to FormSubmit and currently delivers to **rift.clb.media@gmail.com**.
+  Change the `action` in `contact.html` to the chapter's address.
+- Every page is `noindex` and `robots.txt` disallows crawling while this is a proposal. Remove
+  both, and the `.spec-note` block in each footer, when the chapter takes ownership.
+- Photography is by chapter members, credited @OG559Photo and @CG559Photo. Confirm permission
+  before going live on the chapter's own domain.
+- `canonical` tags already point at cencalbmwcca.com.
