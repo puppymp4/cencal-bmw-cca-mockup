@@ -10,8 +10,8 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link rel="preload" as="image" media="(orientation: landscape)" imagesrcset="/assets/img/hero-b-crowd-desk-sm.webp 1200w, /assets/img/hero-b-crowd-desk.webp 1706w" imagesizes="100vw">
-<link rel="preload" as="image" media="(orientation: portrait)" imagesrcset="/assets/img/hero-b-crowd-mob-sm.webp 810w, /assets/img/hero-b-crowd-mob.webp 1080w, /assets/img/hero-b-crowd-mob-lg.webp 1706w" imagesizes="100vw">
+<link rel="preload" as="image" media="(orientation: landscape)" imagesrcset="/assets/img/hero-b-row-desk-sm.webp 1200w, /assets/img/hero-b-row-desk.webp 1706w" imagesizes="100vw">
+<link rel="preload" as="image" media="(orientation: portrait)" imagesrcset="/assets/img/hero-b-row-mob-sm.webp 810w, /assets/img/hero-b-row-mob.webp 1080w, /assets/img/hero-b-row-mob-lg.webp 1706w" imagesizes="100vw">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap">
 <style>
 :root{
@@ -52,15 +52,19 @@ p{margin:0 0 16px;max-width:60ch}
 
 /* hero */
 .hero{position:relative;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-pos-l,50% 55%);animation:kb 22s ease-in-out infinite alternate;will-change:transform}
-@media(orientation:portrait){.hero img{object-position:var(--hero-pos-p,42% 50%);animation-name:kbp}}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-pos-l,50% 62%);animation:kb 22s ease-in-out infinite alternate;will-change:transform}
+@media(orientation:portrait){.hero img{object-position:var(--hero-pos-p,58% 50%);animation-name:kbp}}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
 @keyframes kbp{from{transform:scale(1)}to{transform:scale(1.05)}}
 @media(prefers-reduced-motion:reduce){.hero img{animation:none}}
 .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.86) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.08) 70%,rgba(0,0,0,.35) 100%);z-index:1}
 .hero-body{position:relative;z-index:2;width:100%;padding-bottom:64px}
 @media(min-width:900px){.hero-body{padding-bottom:88px}}
-.hero h1{font-size:clamp(46px,9vw,124px);line-height:.94;letter-spacing:-0.035em;max-width:11ch;margin:18px 0 22px;font-weight:500}
+.hero h1{line-height:.94;letter-spacing:-0.035em;margin:18px 0 22px;font-weight:500}
+.hero h1.h1-xl{font-size:clamp(52px,9.5vw,132px);max-width:12ch}
+.hero h1.h1-lg{font-size:clamp(44px,8.2vw,110px);max-width:15ch}
+.hero h1.h1-md{font-size:clamp(38px,6.6vw,86px);max-width:23ch}
+@media(max-width:600px){.hero h1 br{display:none}}
 .hero .sub{font-size:clamp(17px,1.6vw,21px);color:rgba(255,255,255,.8);max-width:44ch;font-weight:400;margin-bottom:30px}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
 @media(max-width:600px){.ctas{flex-direction:column}.ctas .pill{width:100%;min-height:52px}}
@@ -119,16 +123,17 @@ footer a:hover{color:var(--ink)}
 footer nav{display:flex;gap:24px;flex-wrap:wrap}
 .note{width:100%;font-size:12px;color:var(--ink-3);max-width:80ch;margin-top:8px}
 
-/* concept switcher (review only) */
-.cx{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:90;display:flex;gap:4px;padding:4px;background:rgba(255,255,255,.92);border-radius:999px;backdrop-filter:blur(8px)}
-.cx a{color:#555;font-size:12px;font-weight:700;min-width:36px;min-height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 12px}
-.cx a:hover{color:#000}
-.cx a.on{background:#111;color:#fff}
-/* hero option switcher (review only) */
-.hx{position:fixed;left:50%;bottom:64px;transform:translateX(-50%);z-index:90;display:flex;gap:2px;align-items:center;padding:3px 6px 3px 12px;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.18);border-radius:999px;backdrop-filter:blur(8px);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.hx a{color:rgba(255,255,255,.7);font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;min-height:30px;padding:0 10px;display:inline-flex;align-items:center;border-radius:999px;margin-left:4px}
-.hx a:hover{color:#fff}
-.hx a.on{background:#fff;color:#000}
+/* review controls (removed in the final build): one chip, expands to copy / hero / concept rows */
+.rv{position:fixed;right:16px;bottom:16px;z-index:90}
+.rv-btn{min-height:40px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.94);color:#111;border:0;font:inherit;font-size:12px;font-weight:700;cursor:pointer;backdrop-filter:blur(8px);display:inline-flex;align-items:center;gap:8px}
+.rv-btn::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.rv-panel{position:absolute;right:0;bottom:48px;width:max-content;min-width:250px;padding:10px;border-radius:14px;background:rgba(255,255,255,.97);color:#111;display:grid;gap:4px;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.rv-panel[hidden]{display:none}
+.rv-row{display:flex;align-items:center;gap:2px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#888}
+.rv-row span{width:58px;flex:none}
+.rv-row a{min-width:34px;min-height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;color:#333;font-size:12px;font-weight:700;letter-spacing:0;text-transform:none;padding:0 9px}
+.rv-row a:hover{background:#eee}
+.rv-row a.on{background:#111;color:#fff}
 </style>
 </head>
 <body>
@@ -150,16 +155,16 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
     <!-- art directed: portrait viewports get the full-frame portrait photo, landscape gets a 16:10 band -->
     <picture data-hero-pic>
       <source media="(orientation: portrait)" sizes="100vw"
-              srcset="/assets/img/hero-b-crowd-mob-sm.webp 810w, /assets/img/hero-b-crowd-mob.webp 1080w, /assets/img/hero-b-crowd-mob-lg.webp 1706w">
-      <img src="/assets/img/hero-b-crowd-desk.webp" sizes="100vw"
-           srcset="/assets/img/hero-b-crowd-desk-sm.webp 1200w, /assets/img/hero-b-crowd-desk.webp 1706w"
+              srcset="/assets/img/hero-b-row-mob-sm.webp 810w, /assets/img/hero-b-row-mob.webp 1080w, /assets/img/hero-b-row-mob-lg.webp 1706w">
+      <img src="/assets/img/hero-b-row-desk.webp" sizes="100vw"
+           srcset="/assets/img/hero-b-row-desk-sm.webp 1200w, /assets/img/hero-b-row-desk.webp 1706w"
            width="1706" height="1066" fetchpriority="high" decoding="async"
-           alt="A red BMW M3 parked at a Cen Cal chapter meet in Fresno with members talking behind it">
+           alt="A row of BMW M3s parked nose out at a Kars and Koffee meet, with a member standing beside them">
     </picture>
     <div class="hero-body wrap">
-      <span class="eyebrow">BMW Car Club of America &nbsp;·&nbsp; Central California chapter</span>
-      <h1>Welcome to BMW CCA Central California.</h1>
-      <p class="sub">Second Saturday of every month. 8 AM. Woodward Park, Fresno. All makes welcome.</p>
+      <span class="eyebrow" data-copy-eyebrow>BMW Car Club of America &nbsp;·&nbsp; Central California chapter</span>
+      <h1 class="h1-lg" data-copy-h1>Park at the end <br>of the row.</h1>
+      <p class="sub" data-copy-sub>Kars &amp; Koffee. Second Saturday of every month, 8 AM, Woodward Park, Fresno. Free, no RSVP, and you don't need a BMW to be welcome.</p>
       <div class="ctas">
         <a class="pill fill" href="#next" data-nextbtn>Next meet</a>
         <a class="pill" href="#join">Join, $58 a year</a>
@@ -237,18 +242,20 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
   </div>
 </footer>
 
-<nav class="hx" aria-label="Hero photo options">Hero
-  <a href="?hero=crowd" data-hero-opt="crowd">1 Crowd</a>
-  <a href="?hero=row" data-hero-opt="row">2 Row</a>
-  <a href="?hero=m6" data-hero-opt="m6">3 M6</a>
-</nav>
-<nav class="cx" aria-label="Concept switcher">
-  <a href="/concepts">Concepts</a>
-  <a href="/concepts/magazine">A</a>
-  <a href="/concepts/welcome" class="on" aria-current="page">B</a>
-  <a href="/concepts/kinetic">C</a>
-  <a href="/concepts/light">D</a>
-</nav>
+<div class="rv" data-rv>
+  <button class="rv-btn" type="button" aria-expanded="false" aria-controls="rv-panel" data-rv-btn>Review options</button>
+  <div class="rv-panel" id="rv-panel" hidden>
+    <div class="rv-row"><span>Copy</span>
+      <a data-opt="copy" data-val="1" href="#">1</a><a data-opt="copy" data-val="2" href="#">2</a><a data-opt="copy" data-val="3" href="#">3</a><a data-opt="copy" data-val="4" href="#">4</a><a data-opt="copy" data-val="5" href="#">5</a>
+    </div>
+    <div class="rv-row"><span>Hero</span>
+      <a data-opt="hero" data-val="row" href="#">Row</a><a data-opt="hero" data-val="crowd" href="#">Crowd</a><a data-opt="hero" data-val="m6" href="#">M6</a>
+    </div>
+    <div class="rv-row"><span>Concept</span>
+      <a href="/concepts">All</a><a href="/concepts/magazine">A</a><a href="/concepts/welcome" class="on">B</a><a href="/concepts/kinetic">C</a><a href="/concepts/light">D</a>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -267,17 +274,50 @@ footer nav{display:flex;gap:24px;flex-wrap:wrap}
         posL:'50% 45%',posP:'50% 50%',
         alt:'A red BMW M6 Gran Coupe parked in morning light at a Cen Cal chapter meet'}
   };
-  var key=new URLSearchParams(location.search).get('hero')||'crowd'; if(!HEROES[key])key='crowd';
+  /* copy options, review only. Static markup carries option 1 so no-JS and first paint match. */
+  var COPY={
+    1:{size:'lg',eyebrow:'BMW Car Club of America &nbsp;·&nbsp; Central California chapter',
+       h1:'Park at the end <br>of the row.',
+       sub:'Kars &amp; Koffee. Second Saturday of every month, 8 AM, Woodward Park, Fresno. Free, no RSVP, and you don\'t need a BMW to be welcome.'},
+    2:{size:'xl',eyebrow:'BMW Car Club of America &nbsp;·&nbsp; Fresno, Clovis and the Central Valley',
+       h1:'The valley\'s <br>BMW club.',
+       sub:'We meet the second Saturday of every month at Woodward Park, Fresno, 8 AM to noon. All makes welcome, no membership needed.'},
+    3:{size:'md',eyebrow:'BMW Car Club of America &nbsp;·&nbsp; Central California chapter',
+       h1:'You don\'t need a BMW. <br>Just a Saturday morning.',
+       sub:'Kars &amp; Koffee, second Saturday of every month, 8 AM, Woodward Park, Fresno. Bring whatever you drive.'},
+    4:{size:'md',eyebrow:'BMW Car Club of America &nbsp;·&nbsp; Central California chapter',
+       h1:'Second Saturday, 8 AM. <br>Bring what you drive.',
+       sub:'Kars &amp; Koffee at Woodward Park, Fresno, with the Central California chapter of BMW CCA. Free. No RSVP.'},
+    5:{size:'lg',eyebrow:'BMW Car Club of America &nbsp;·&nbsp; Central California chapter',
+       h1:'Coffee at eight. <br>Cars until noon.',
+       sub:'Kars &amp; Koffee, second Saturday of every month, Woodward Park, Fresno. All makes welcome.'}
+  };
+  var q=new URLSearchParams(location.search);
+  var key=q.get('hero')||'row'; if(!HEROES[key])key='row';
+  var ckey=q.get('copy')||'1'; if(!COPY[ckey])ckey='1';
   var H=HEROES[key],base='/assets/img/';
   var pic=document.querySelector('[data-hero-pic]'),src=pic.querySelector('source'),img=pic.querySelector('img');
-  if(key!=='crowd'){
+  if(key!=='row'){
     src.srcset=H.mob.map(function(s){return base+s}).join(', ');
     img.srcset=H.desk.map(function(s){return base+s}).join(', ');
     img.src=base+H.deskSrc; img.width=H.w; img.height=H.h; img.alt=H.alt;
   }
   document.documentElement.style.setProperty('--hero-pos-l',H.posL);
   document.documentElement.style.setProperty('--hero-pos-p',H.posP);
-  document.querySelectorAll('[data-hero-opt]').forEach(function(a){a.classList.toggle('on',a.dataset.heroOpt===key)});
+  var C=COPY[ckey];
+  if(ckey!=='1'){
+    document.querySelector('[data-copy-eyebrow]').innerHTML=C.eyebrow;
+    var h1=document.querySelector('[data-copy-h1]'); h1.innerHTML=C.h1; h1.className='h1-'+C.size;
+    document.querySelector('[data-copy-sub]').innerHTML=C.sub;
+  }
+  /* review chip: links keep the other parameter */
+  document.querySelectorAll('[data-opt]').forEach(function(a){
+    var o=a.dataset.opt,v=a.dataset.val;
+    a.href='?hero='+(o==='hero'?v:key)+'&copy='+(o==='copy'?v:ckey);
+    a.classList.toggle('on',(o==='hero'?key:ckey)===v);
+  });
+  var rvb=document.querySelector('[data-rv-btn]'),rvp=document.getElementById('rv-panel');
+  rvb.addEventListener('click',function(){var open=rvp.hidden;rvp.hidden=!open;rvb.setAttribute('aria-expanded',String(open))});
 
   var nav=document.getElementById('nav');
   function onScroll(){nav.classList.toggle('solid',window.scrollY>40)}
