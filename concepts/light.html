@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept D, Curated | BMW CCA Cen Cal</title>
+<meta name="description" content="Concept D. Quiet, image-led direction for the BMW CCA Central California chapter site, borrowing the design language of cosmos.so.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F9F7F3">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* tokens lifted from cosmos.so: warm paper, warm gray ramp, tight tracking, tiny radii, 20px gaps */
+:root{
+  --paper:#F9F7F3; --g50:#FCFBFA; --g100:#F2F1F0; --g200:#DEDEDE; --g300:#D0CDCD; --g400:#ADADAD;
+  --g500:#919191; --g600:#757575; --g700:#5A5A5A; --g800:#434242; --g1000:#0D0D0D;
+  --text:var(--g1000); --text-2:var(--g600); --text-3:var(--g400);
+  --border:color-mix(in oklch,var(--g1000) 12%,transparent);
+  --border-2:color-mix(in oklch,var(--g1000) 7%,transparent);
+  --accent:#1C69D4;
+  --sans:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"DM Mono", ui-monospace, Menlo, monospace;
+  --r-el:3px; --r-md:6px; --r-lg:8px; --r-xl:12px; --r-2xl:16px;
+  --gap:20px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scrollbar-gutter:stable;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--text);font-family:var(--sans);font-size:1rem;line-height:1.4;letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--r-el)}
+h1,h2,h3{margin:0;font-weight:500}
+p{margin:0 0 14px;max-width:56ch}
+.wrap{max-width:1440px;margin-inline:auto;padding-inline:var(--gap)}
+@media(min-width:900px){.wrap{padding-inline:32px}}
+.grid>*{min-width:0}
+
+/* cosmos type scale */
+.display-xxl{font-size:clamp(2.75rem,7.2vw,4.5rem);line-height:.86;letter-spacing:-0.03em;font-weight:500}
+.display-lg{font-size:clamp(2rem,4vw,3rem);line-height:1;letter-spacing:-0.03em;font-weight:500}
+.heading-lg{font-size:1.625rem;line-height:1.15;letter-spacing:-0.02em;font-weight:500}
+.heading{font-size:1.25rem;line-height:1.15;letter-spacing:-0.02em;font-weight:500}
+.body-lg{font-size:1rem;line-height:1.5;letter-spacing:-0.02em}
+.body{font-size:.9375rem;line-height:1.375rem;letter-spacing:-0.01875em}
+.caption{font-size:.75rem;line-height:1.17;letter-spacing:-0.02em}
+.numerical{font-family:var(--mono);font-size:.625rem;line-height:1.15;letter-spacing:-0.01em}
+.label{font-size:.6875rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);font-weight:500}
+.t2{color:var(--text-2)}.t3{color:var(--text-3)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in oklch,var(--paper) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:56px;gap:16px}
+.brand{display:flex;align-items:baseline;gap:8px;min-height:44px;align-items:center;font-weight:500}
+.brand small{color:var(--text-3);font-weight:400;font-size:.875rem}
+.links{display:none;gap:24px;position:absolute;left:50%;transform:translateX(-50%)}
+@media(min-width:900px){.links{display:flex}}
+.links a,.textlink{font-size:.9375rem;color:var(--text-2);transition:color .2s;min-height:44px;display:inline-flex;align-items:center}
+.links a:hover,.textlink:hover{color:var(--text)}
+.right{display:flex;align-items:center;gap:14px}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border-radius:999px;font-size:.9375rem;font-weight:500;letter-spacing:-0.02em;border:1px solid var(--border);background:transparent;transition:all .2s;line-height:1.125rem}
+.pill:hover{border-color:var(--g1000)}
+.pill.solid{background:var(--g1000);color:#fff;border-color:var(--g1000)}
+.pill.solid:hover{background:var(--g800);border-color:var(--g800)}
+.pill.lg{min-height:48px;padding:0 20px}
+
+/* hero */
+.hero{padding:72px 0 40px}
+@media(min-width:900px){.hero{padding:120px 0 56px}}
+.hero h1{max-width:13ch;margin-bottom:22px}
+.hero .sub{max-width:44ch;color:var(--text-2);margin-bottom:26px}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:600px){.ctas{flex-direction:column}.ctas .pill{width:100%}}
+
+/* masonry, native aspect ratios */
+.masonry{columns:2;column-gap:var(--gap);padding:8px 0 0}
+@media(min-width:700px){.masonry{columns:3}}
+@media(min-width:1100px){.masonry{columns:4}}
+.masonry figure{margin:0 0 var(--gap);break-inside:avoid;display:block}
+.masonry .img{border-radius:var(--r-lg);overflow:hidden;background:var(--g100)}
+.masonry img{width:100%;transition:opacity .25s}
+.masonry figure:hover img{opacity:.92}
+.masonry figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 8px;margin-top:8px;color:var(--text-3);font-size:.75rem;letter-spacing:-0.02em;line-height:1.17}
+.masonry figcaption>*{min-width:0;overflow-wrap:anywhere}
+.masonry figcaption b{font-weight:500;color:var(--text-2)}
+.masonry figure[hidden]{display:none}
+
+/* chips */
+.chips{display:flex;gap:6px;flex-wrap:wrap;padding:12px 0 8px}
+.chip{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--border);background:transparent;font:inherit;font-size:.875rem;letter-spacing:-0.02em;color:var(--text-2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.chip:hover{color:var(--text);border-color:var(--g1000)}
+.chip[aria-pressed="true"]{background:var(--g1000);color:#fff;border-color:var(--g1000)}
+.chip .n{font-family:var(--mono);font-size:.625rem;color:inherit;opacity:.6}
+
+/* ticker */
+.ticker{border-block:1px solid var(--border-2);padding:16px 0;overflow:hidden;margin:56px 0 0}
+.ticker .row{display:flex;gap:40px;width:max-content;animation:tk 40s linear infinite;white-space:nowrap;color:var(--text-2);font-size:.9375rem}
+.ticker:hover .row{animation-play-state:paused}
+@keyframes tk{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker .row{animation:none;width:auto;flex-wrap:wrap;gap:12px 24px}}
+.ticker .row span{display:inline-flex;align-items:center;gap:40px}
+.ticker .row span::after{content:"";width:3px;height:3px;border-radius:50%;background:var(--g300)}
+
+/* features */
+.feat{padding:96px 0 0}
+.feat-grid{display:grid;gap:32px}
+@media(min-width:900px){.feat-grid{grid-template-columns:5fr 7fr;gap:72px;align-items:start}}
+.feat .sticky{position:sticky;top:88px}
+.feat h2{margin:10px 0 14px;max-width:16ch}
+.feat p{color:var(--text-2)}
+.feat figure{margin:0}
+.feat figure .img{border-radius:var(--r-lg);overflow:hidden;background:var(--g100)}
+.feat figcaption{margin-top:8px;color:var(--text-3);font-size:.75rem;letter-spacing:-0.02em;display:flex;justify-content:space-between;gap:8px}
+.meetline{display:flex;flex-wrap:wrap;gap:8px 20px;margin:18px 0 22px;font-size:.9375rem}
+.meetline b{font-weight:500}
+.meetline .t3{font-family:var(--mono);font-size:.75rem;letter-spacing:0}
+
+/* season list */
+.rows{border-top:1px solid var(--border);margin-top:8px}
+.row-item{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--border)}
+@media(min-width:700px){.row-item{grid-template-columns:44px 1.3fr 1fr auto;align-items:baseline}}
+.row-item .num{font-family:var(--mono);font-size:.625rem;color:var(--text-3);padding-top:6px}
+.row-item h3{font-size:1.25rem;letter-spacing:-0.02em;line-height:1.15}
+.row-item p{color:var(--text-2);font-size:.9375rem;margin:4px 0 0}
+@media(min-width:700px){.row-item p{margin:0}}
+.row-item .when{color:var(--text-3);font-size:.875rem;grid-column:2}
+@media(min-width:700px){.row-item .when{grid-column:auto;text-align:right}}
+
+/* membership */
+.member{padding:96px 0 0}
+.member-card{background:var(--g100);border-radius:var(--r-2xl);padding:32px 24px;display:grid;gap:28px}
+@media(min-width:900px){.member-card{grid-template-columns:1fr auto;align-items:end;padding:56px}}
+.member h2{margin:10px 0 14px;max-width:14ch}
+.member p{color:var(--text-2)}
+.member ul{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:8px;color:var(--text-2);font-size:.9375rem}
+.member li::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--accent);margin:0 12px 3px 0}
+.price{font-size:clamp(3rem,7vw,5.5rem);line-height:.86;letter-spacing:-0.04em;font-weight:500;text-align:right}
+.price small{display:block;font-size:.75rem;letter-spacing:-0.02em;color:var(--text-3);margin-top:10px;font-weight:400}
+
+/* officers */
+.people{padding:96px 0 0}
+.people-grid{display:grid;gap:0 40px;border-top:1px solid var(--border);margin-top:16px}
+@media(min-width:700px){.people-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.people-grid{grid-template-columns:1fr 1fr 1fr}}
+.person{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-2);font-size:.9375rem}
+.person span{color:var(--text-3);font-size:.75rem;padding-top:3px}
+
+/* footer */
+footer{padding:96px 0 120px;color:var(--text-3);font-size:.875rem}
+footer .top{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:24px}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+footer a{color:var(--text-2);min-height:36px;display:inline-flex;align-items:center}
+footer a:hover{color:var(--text)}
+.note{margin-top:24px;font-size:.75rem;max-width:80ch;line-height:1.5}
+
+/* concept switcher (review only) */
+.cx{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:90;display:flex;gap:4px;padding:4px;background:rgba(13,13,13,.92);border-radius:999px;backdrop-filter:blur(8px)}
+.cx a{color:#bbb;font-size:12px;font-weight:500;min-width:36px;min-height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 12px}
+.cx a:hover{color:#fff}
+.cx a.on{background:#fff;color:#111}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap" style="position:relative">
+    <a class="brand" href="#top">Cen Cal <small>BMW CCA</small></a>
+    <nav class="links" aria-label="Main">
+      <a href="#events">Events</a><a href="#gallery">Gallery</a><a href="#join">Join</a>
+    </nav>
+    <div class="right">
+      <a class="textlink" href="#contact" style="display:none" id="contactlink">Contact</a>
+      <a class="pill solid" href="#join">Join</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="display-xxl">A club for people who drive BMWs. And people who don't yet.</h1>
+      <p class="sub body-lg">The Central California chapter of the BMW Car Club of America. Kars &amp; Koffee on the second Saturday of every month at Woodward Park in Fresno. All makes welcome.</p>
+      <div class="ctas">
+        <a class="pill solid lg" href="#events" data-nextbtn>Next meet</a>
+        <a class="pill lg" href="#join">Join, $58 a year</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="chips" role="group" aria-label="Filter photos" data-chips>
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">Everything <span class="n" data-count-all>12</span></button>
+        <button class="chip" type="button" data-filter="bmw" aria-pressed="false">BMW <span class="n" data-count-bmw>8</span></button>
+        <button class="chip" type="button" data-filter="open" aria-pressed="false">Other makes <span class="n" data-count-open>4</span></button>
+      </div>
+      <div class="masonry" data-masonry>
+        <figure data-cat="bmw"><div class="img"><img src="../assets/img/hero-meet-lineup.webp" width="1200" height="1800" fetchpriority="high" alt="A row of BMW M3s nose out at a Kars and Koffee meet"></div><figcaption><b>Kars &amp; Koffee</b><span>Photograph by @OG559Photo</span></figcaption></figure>
+        <figure data-cat="bmw"><div class="img"><img src="../assets/img/gal-bmw-09.webp" width="800" height="534" loading="lazy" alt="Lime green BMW M3 at a chapter meet"></div><figcaption><b>G80 M3</b><span>@CG559Photo</span></figcaption></figure>
+        <figure data-cat="open"><div class="img"><img src="../assets/img/gal-open-01.webp" width="800" height="534" loading="lazy" alt="Orange Lotus Elise at a chapter meet"></div><figcaption><b>Lotus Elise</b><span>All makes welcome</span></figcaption></figure>
+        <figure data-cat="bmw"><div class="img"><img src="../assets/img/gal-bmw-07.webp" width="800" height="1200" loading="lazy" alt="White BMW M2 from the front corner"></div><figcaption><b>M2</b><span>@CG559Photo</span></figcaption></figure>
+        <figure data-cat="bmw"><div class="img"><img src="../assets/img/gal-bmw-14.webp" width="800" height="534" loading="lazy" alt="Classic BMW E30 convertible at the December meet"></div><figcaption><b>E30, December</b><span>Toy drive</span></figcaption></figure>
+        <figure data-cat="open"><div class="img"><img src="../assets/img/gal-open-08.webp" width="800" height="534" loading="lazy" alt="Blue Toyota Supra at a chapter meet"></div><figcaption><b>Supra</b><span>@OG559Photo</span></figcaption></figure>
+        <figure data-cat="bmw"><div class="img"><img src="../assets/img/event-track-day.webp" width="1200" height="1500" loading="lazy" alt="A white BMW E36 race car beside other chapter cars"></div><figcaption><b>E36, track prepared</b><span>Driving school</span></figcaption></figure>
+        <figure data-cat="bmw"><div class="img"><img src="../assets/img/gal-bmw-01.webp" width="800" height="534" loading="lazy" alt="Black BMW E46 M3 from the rear"></div><figcaption><b>E46 M3</b><span>@CG559Photo</span></figcaption></figure>
+        <figure data-cat="open"><div class="img"><img src="../assets/img/gal-open-03.webp" width="800" height="534" loading="lazy" alt="Grey Porsche 911 at a chapter meet"></div><figcaption><b>911</b><span>All makes welcome</span></figcaption></figure>
+        <figure data-cat="bmw"><div class="img"><img src="../assets/img/gal-bmw-06.webp" width="800" height="1066" loading="lazy" alt="Taillight and badge on a blue BMW M3 Competition"></div><figcaption><b>M3 Competition</b><span>@OG559Photo</span></figcaption></figure>
+        <figure data-cat="bmw"><div class="img"><img src="../assets/img/feature-m6.webp" width="1400" height="932" loading="lazy" alt="A red BMW M6 Gran Coupe in morning light"></div><figcaption><b>M6 Gran Coupe</b><span>@OG559Photo</span></figcaption></figure>
+        <figure data-cat="open"><div class="img"><img src="../assets/img/gal-open-02.webp" width="800" height="534" loading="lazy" alt="Red classic Triumph roadster with the bonnet up"></div><figcaption><b>Triumph TR4</b><span>All makes welcome</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="Makes that have shown up at Kars and Koffee">
+    <div class="row">
+      <span>BMW</span><span>Porsche</span><span>Lotus</span><span>Toyota</span><span>Nissan</span><span>Mercedes-AMG</span><span>Dodge</span><span>Mitsubishi</span><span>Triumph</span><span>Subaru</span><span>Ferrari</span><span>Genesis</span>
+      <span aria-hidden="true">BMW</span><span aria-hidden="true">Porsche</span><span aria-hidden="true">Lotus</span><span aria-hidden="true">Toyota</span><span aria-hidden="true">Nissan</span><span aria-hidden="true">Mercedes-AMG</span><span aria-hidden="true">Dodge</span><span aria-hidden="true">Mitsubishi</span><span aria-hidden="true">Triumph</span><span aria-hidden="true">Subaru</span><span aria-hidden="true">Ferrari</span><span aria-hidden="true">Genesis</span>
+    </div>
+  </div>
+
+  <section class="feat" id="events">
+    <div class="wrap feat-grid grid">
+      <div class="sticky">
+        <span class="label">By month</span>
+        <h2 class="display-lg">Second Saturday, every month.</h2>
+        <p class="body-lg">Kars &amp; Koffee at the Starbucks across from Woodward Park. Coffee, cars, and whoever shows up. Free, no RSVP, and you do not need to be a member.</p>
+        <div class="meetline">
+          <span><b>Next</b> <span data-when>Saturday, October 10</span></span>
+          <span class="t3">8:00 to 12:00</span>
+          <span class="t3">9423 N Fort Washington Rd</span>
+        </div>
+        <div class="ctas">
+          <a class="pill solid" data-gcal href="#events">Add to calendar</a>
+          <a class="pill" href="https://www.google.com/maps/search/?api=1&amp;query=9423%20N%20Fort%20Washington%20Rd%20Fresno%20CA%2093730" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <figure>
+        <div class="img"><img src="../assets/img/event-kars-and-koffee.webp" width="1200" height="800" loading="lazy" alt="Members standing around a white BMW M3 at Kars and Koffee"></div>
+        <figcaption><span>Kars &amp; Koffee, Woodward Park</span><span>Photograph by @CG559Photo</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="feat">
+    <div class="wrap feat-grid grid">
+      <div class="sticky">
+        <span class="label">By season</span>
+        <h2 class="display-lg">Four dates the year is built around.</h2>
+        <p class="body-lg">Exact dates move year to year and get announced on Instagram. Track events run under BMW CCA insurance, which is why they are members only.</p>
+      </div>
+      <div class="rows">
+        <div class="row-item"><span class="num">01</span><h3>Euro Car Show</h3><p>Clovis Community College. Awards across categories. $20 to enter a car, free to walk.</p><span class="when">June</span></div>
+        <div class="row-item"><span class="num">02</span><h3>High Performance Driving School</h3><p>Two instructed days at Buttonwillow with the San Diego chapter. Members only.</p><span class="when">Spring</span></div>
+        <div class="row-item"><span class="num">03</span><h3>Legends of the Autobahn</h3><p>The German-car concours at Pacific Grove during Monterey Car Week. Members only.</p><span class="when">August</span></div>
+        <div class="row-item"><span class="num">04</span><h3>Toy drive</h3><p>The last Kars &amp; Koffee of the year. Bring a toy for Valley Children's Hospital.</p><span class="when">December</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="member" id="join">
+    <div class="wrap">
+      <div class="member-card grid">
+        <div>
+          <span class="label">Membership</span>
+          <h2 class="display-lg">You do not need to join to show up.</h2>
+          <p class="body-lg">Membership is what gets you onto the track, into Legends of the Autobahn, and Roundel magazine in the mailbox every month. It is paid to BMW CCA national. Pick Central California as your chapter.</p>
+          <ul>
+            <li>Roundel magazine, monthly</li>
+            <li>Driving school at Buttonwillow Raceway</li>
+            <li>Legends of the Autobahn, Monterey Car Week</li>
+            <li>Chapter events across the Central Valley</li>
+          </ul>
+          <a class="pill solid lg" href="https://www.bmwcca.org/chapter/central-california-chapter" target="_blank" rel="noopener">Join through BMW CCA</a>
+        </div>
+        <div class="price">$58<small>per year</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="people">
+    <div class="wrap">
+      <span class="label">Chapter officers</span>
+      <div class="people-grid grid">
+        <div class="person">Wallace Mcnair<span>Secretary</span></div>
+        <div class="person">Terry Eidson<span>Treasurer</span></div>
+        <div class="person">Adrian Garcia<span>Board</span></div>
+        <div class="person">Roger Gong<span>Board</span></div>
+        <div class="person">Andrew Mercado<span>Board</span></div>
+        <div class="person">Wayne Wundram<span>Board</span></div>
+        <div class="person">Eddy Funahashi<span>Board</span></div>
+        <div class="person">Dana Bentley<span>Board</span></div>
+        <div class="person">Chuck Lau<span>Board</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="top">
+      <span>BMW CCA Central California Chapter · PO Box 3285, Clovis, CA 93613</span>
+      <nav aria-label="Footer">
+        <a href="mailto:contact@mail.cencalbmwcca.com">Email</a>
+        <a href="https://instagram.com/bmwccacencal" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://m.facebook.com/groups/1497077221077118" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.bmwcca.org/chapter/central-california-chapter" target="_blank" rel="noopener">BMW CCA</a>
+      </nav>
+    </div>
+    <p class="note">Concept D of four. Unofficial design proposal by Rift Media for the chapter, not operated by BMW CCA. Photography by chapter members, credited @OG559Photo and @CG559Photo.</p>
+  </div>
+</footer>
+
+<nav class="cx" aria-label="Concept switcher">
+  <a href="index.html">Concepts</a>
+  <a href="magazine.html">A</a>
+  <a href="welcome.html">B</a>
+  <a href="kinetic.html">C</a>
+  <a href="light.html" class="on" aria-current="page">D</a>
+</nav>
+
+<script>
+(function(){
+  /* chips filter the masonry */
+  var chips=document.querySelectorAll('[data-chips] .chip'),figs=document.querySelectorAll('[data-masonry] figure');
+  var counts={all:figs.length,bmw:0,open:0};
+  figs.forEach(function(f){counts[f.dataset.cat]++});
+  ['all','bmw','open'].forEach(function(k){var el=document.querySelector('[data-count-'+k+']');if(el)el.textContent=counts[k]});
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    chips.forEach(function(x){x.setAttribute('aria-pressed',String(x===c))});
+    var f=c.dataset.filter;figs.forEach(function(g){g.hidden=!(f==='all'||g.dataset.cat===f)});
+  })});
+
+  function nextKK(){var n=new Date(),c=new Date(n.getFullYear(),n.getMonth(),1);
+    for(var i=0;i<14;i++){var f=new Date(c.getFullYear(),c.getMonth(),1),o=(6-f.getDay()+7)%7,
+      d=new Date(c.getFullYear(),c.getMonth(),1+o+7,8,0,0),e=new Date(d);e.setHours(12,0,0,0);
+      if(e>n)return d;c.setMonth(c.getMonth()+1)}}
+  var M=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var d=nextKK(); if(!d)return;
+  var pad=function(n){return n<10?'0'+n:''+n};
+  document.querySelector('[data-when]').textContent='Saturday, '+M[d.getMonth()]+' '+d.getDate();
+  document.querySelector('[data-nextbtn]').textContent='Next meet, '+M[d.getMonth()].slice(0,3)+' '+d.getDate();
+  var st=function(x){return x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(x.getHours())+pad(x.getMinutes())+'00'};
+  var e=new Date(d);e.setHours(12,0,0,0);
+  document.querySelector('[data-gcal]').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Kars & Koffee - BMW CCA Cen Cal')+'&dates='+st(d)+'/'+st(e)+'&location='+encodeURIComponent('9423 N Fort Washington Rd, Fresno, CA 93730');
+})();
+</script>
+</body>
+</html>

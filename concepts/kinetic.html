@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concept C, Kinetic | BMW CCA Cen Cal</title>
+<meta name="description" content="Concept C. Scroll-driven 3D chapter emblem direction for the BMW CCA Central California chapter site.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#05070B">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500&display=swap">
+<style>
+:root{
+  --bg:#05070B; --bg-2:#0B0F16; --ink:#F2F4F8; --ink-2:#98A1B0; --ink-3:#5F6876;
+  --line:rgba(255,255,255,.1); --blue:#1C69D4; --blue-soft:rgba(28,105,212,.35);
+  --display:"Clash Display", system-ui, sans-serif; --body:Satoshi, system-ui, -apple-system, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:600;letter-spacing:-0.02em;line-height:1}
+p{margin:0 0 16px;max-width:56ch}
+.wrap{max-width:1320px;margin-inline:auto;padding-inline:20px}
+@media(min-width:900px){.wrap{padding-inline:48px}}
+.grid>*{min-width:0}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:500;font-family:var(--body)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:500;font-size:15px;border:1px solid rgba(255,255,255,.22);transition:all .2s}
+.btn:hover{border-color:#fff}
+.btn.fill{background:#fff;color:#000;border-color:#fff}
+.btn.fill:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 20px;mix-blend-mode:difference}
+@media(min-width:900px){.nav{padding:22px 48px}}
+.nav a{min-height:44px;display:inline-flex;align-items:center;font-weight:500;font-family:var(--display);letter-spacing:.02em}
+.nav .r{display:flex;gap:24px}
+.nav .r a{font-family:var(--body);font-size:15px;color:#ddd}
+@media(max-width:700px){.nav .r a:not(:last-child){display:none}}
+
+/* stage */
+.stage{height:440vh;position:relative}
+.sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.glow{position:absolute;left:50%;top:50%;width:80vmin;height:80vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(28,105,212,.35),rgba(28,105,212,0) 60%);filter:blur(30px);pointer-events:none}
+.bigtext{position:absolute;top:50%;left:0;transform:translateY(-50%);white-space:nowrap;font-family:var(--display);font-weight:700;font-size:38vw;line-height:1;letter-spacing:-0.04em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);pointer-events:none;user-select:none;will-change:transform}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(circle at 50% 50%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 30%,transparent 75%);pointer-events:none}
+
+/* 3d coin */
+.coin-wrap{position:absolute;left:50%;top:44%;width:min(52vmin,420px);aspect-ratio:1;transform:translate(-50%,-50%);perspective:1400px;will-change:transform}
+@media(min-width:900px){.coin-wrap{left:62%;top:50%;width:min(60vmin,520px)}}
+.coin{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.face,.rim{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face svg{width:100%;height:100%;display:block}
+.rim{background:radial-gradient(circle at 50% 50%,#1a1d24 0,#0b0d12 62%,#000 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+.spec{position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.28) 50%,rgba(255,255,255,0) 65%);mix-blend-mode:screen;pointer-events:none;will-change:transform}
+.shadow{position:absolute;left:50%;top:44%;width:min(52vmin,420px);height:60px;transform:translate(-50%,calc(-50% + min(26vmin,210px) + 40px));border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.7),transparent 70%);filter:blur(14px);pointer-events:none}
+@media(min-width:900px){.shadow{left:62%;top:50%;width:min(60vmin,520px);transform:translate(-50%,calc(-50% + min(30vmin,260px) + 50px))}}
+
+/* panels */
+.panel{position:absolute;left:20px;right:20px;bottom:84px;opacity:0;transform:translateY(24px);pointer-events:none;will-change:transform,opacity}
+@media(min-width:900px){.panel{left:48px;right:auto;bottom:auto;top:50%;transform:translateY(-50%);width:min(46vw,620px)}}
+.panel.on{pointer-events:auto}
+.panel h2{font-size:clamp(40px,7.5vw,92px);margin:14px 0 18px;max-width:11ch}
+.panel p{color:var(--ink-2);font-size:clamp(16px,1.4vw,19px);max-width:40ch;margin-bottom:22px}
+.panel .btn{margin-right:8px}
+.progress{position:absolute;right:20px;top:50%;transform:translateY(-50%);display:none;flex-direction:column;gap:14px;font-family:var(--body);font-size:11px;letter-spacing:.18em;color:var(--ink-3)}
+@media(min-width:900px){.progress{display:flex}}
+.progress span{display:flex;align-items:center;gap:10px}
+.progress span::before{content:"";width:18px;height:1px;background:var(--ink-3);transition:all .3s}
+.progress span.on{color:#fff}.progress span.on::before{width:32px;background:#fff}
+.hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:10px}
+.hint::after{content:"";width:1px;height:26px;background:linear-gradient(var(--ink-3),transparent);animation:hint 1.8s ease-in-out infinite}
+@keyframes hint{0%{opacity:0;transform:translateY(-6px)}50%{opacity:1}100%{opacity:0;transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){.hint::after{animation:none}}
+
+/* after the stage */
+.after{position:relative;background:var(--bg);border-top:1px solid var(--line)}
+.dates{padding:96px 0}
+.dates h2{font-size:clamp(32px,4.5vw,56px);margin:12px 0 32px}
+.date-list{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.date{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:20px;background:var(--bg-2)}
+.date .d{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;min-width:64px}
+.date .d small{display:block;font-family:var(--body);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:500;margin-bottom:2px}
+.date .t b{display:block;font-weight:500;font-size:17px}
+.date .t span{color:var(--ink-2);font-size:14px}
+.date a{font-size:14px;color:var(--ink-2);min-height:40px;display:inline-flex;align-items:center;border-bottom:1px solid transparent}
+.date a:hover{color:#fff;border-color:#fff}
+@media(max-width:600px){.date{grid-template-columns:auto 1fr}.date a{grid-column:2}}
+
+/* marquee */
+.marquee{padding:0 0 96px;overflow:hidden}
+.track{display:flex;gap:12px;width:max-content;animation:mq 46s linear infinite}
+.track.rev{animation-direction:reverse;margin-top:12px}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.track{animation:none;width:auto;flex-wrap:wrap}.track.rev{display:none}}
+.track img{height:220px;width:auto;border-radius:10px;flex:none}
+@media(min-width:900px){.track img{height:300px}}
+
+/* join */
+.join{padding:0 0 96px}
+.join-box{border:1px solid var(--line);border-radius:24px;padding:40px 24px;background:linear-gradient(160deg,rgba(28,105,212,.14),rgba(28,105,212,0) 55%),var(--bg-2);display:grid;gap:28px}
+@media(min-width:900px){.join-box{grid-template-columns:1fr auto;align-items:center;padding:64px}}
+.join h2{font-size:clamp(32px,4.5vw,56px);margin:12px 0 14px}
+.join p{color:var(--ink-2)}
+.join .price{font-family:var(--display);font-weight:700;font-size:clamp(72px,9vw,120px);letter-spacing:-0.04em;line-height:.9;text-align:right}
+.join .price small{display:block;font-family:var(--body);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);margin-top:10px}
+
+footer{border-top:1px solid var(--line);padding:40px 0 110px;color:var(--ink-3);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:center}
+footer nav{display:flex;gap:24px;flex-wrap:wrap}
+footer a{color:var(--ink-2);min-height:36px;display:inline-flex;align-items:center}
+footer a:hover{color:#fff}
+.note{width:100%;font-size:12px;max-width:80ch;margin-top:8px}
+
+/* concept switcher (review only) */
+.cx{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:90;display:flex;gap:4px;padding:4px;background:rgba(255,255,255,.92);border-radius:999px;backdrop-filter:blur(8px)}
+.cx a{color:#555;font-size:12px;font-weight:700;min-width:36px;min-height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 12px;font-family:var(--body)}
+.cx a:hover{color:#000}
+.cx a.on{background:#111;color:#fff}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="#top">Cen Cal &nbsp;<span style="color:#888;font-weight:400">/ BMW CCA</span></a>
+  <div class="r">
+    <a href="#dates">Events</a><a href="#gallery">Gallery</a><a href="#join">Join</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ SCROLL STAGE ============ -->
+  <div class="stage" id="stage">
+    <div class="sticky">
+      <div class="dots" aria-hidden="true"></div>
+      <div class="bigtext" aria-hidden="true" data-bigtext>CEN CAL&nbsp;&nbsp;CEN CAL</div>
+      <div class="glow" aria-hidden="true" data-glow></div>
+      <div class="shadow" aria-hidden="true"></div>
+
+      <div class="coin-wrap" aria-hidden="true">
+        <div class="coin" data-coin>
+          <!-- front face: chapter emblem -->
+          <div class="face front">
+            <svg viewBox="0 0 200 200">
+              <defs>
+                <path id="ringpath" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/>
+                <radialGradient id="ring" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#2a2e36"/><stop offset=".55" stop-color="#0d1015"/><stop offset="1" stop-color="#000"/></radialGradient>
+                <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3A8BF0"/><stop offset="1" stop-color="#0F4FB0"/></linearGradient>
+                <linearGradient id="white" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D9DEE6"/></linearGradient>
+              </defs>
+              <circle cx="100" cy="100" r="100" fill="url(#ring)"/>
+              <circle cx="100" cy="100" r="99" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+              <circle cx="100" cy="100" r="58" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+              <!-- quadrants: top-left and bottom-right blue -->
+              <path d="M100 100 H43 A57 57 0 0 1 100 43 Z" fill="url(#blue)"/>
+              <path d="M100 100 V43 A57 57 0 0 1 157 100 Z" fill="url(#white)"/>
+              <path d="M100 100 H157 A57 57 0 0 1 100 157 Z" fill="url(#blue)"/>
+              <path d="M100 100 V157 A57 57 0 0 1 43 100 Z" fill="url(#white)"/>
+              <text font-family="Clash Display, system-ui, sans-serif" font-weight="600" font-size="15.5" letter-spacing="3.2" fill="#F2F4F8">
+                <textPath href="#ringpath" startOffset="2%">BMW CCA · CENTRAL CALIFORNIA · CHAPTER ·</textPath>
+              </text>
+            </svg>
+            <div class="spec" data-spec></div>
+          </div>
+          <!-- rim slices for thickness -->
+          <div class="rim" style="transform:translateZ(-2px)"></div>
+          <div class="rim" style="transform:translateZ(-4px)"></div>
+          <div class="rim" style="transform:translateZ(-6px)"></div>
+          <div class="rim" style="transform:translateZ(-8px)"></div>
+          <div class="rim" style="transform:translateZ(-10px)"></div>
+          <div class="rim" style="transform:translateZ(-12px)"></div>
+          <div class="rim" style="transform:translateZ(-14px)"></div>
+          <div class="rim" style="transform:translateZ(-16px)"></div>
+          <div class="rim" style="transform:translateZ(-18px)"></div>
+          <div class="rim" style="transform:translateZ(-20px)"></div>
+          <!-- back face -->
+          <div class="face back" style="transform:translateZ(-22px) rotateY(180deg)">
+            <svg viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="100" fill="url(#ring)"/>
+              <circle cx="100" cy="100" r="99" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+              <circle cx="100" cy="100" r="58" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+              <path d="M100 100 H43 A57 57 0 0 1 100 43 Z" fill="url(#blue)"/>
+              <path d="M100 100 V43 A57 57 0 0 1 157 100 Z" fill="url(#white)"/>
+              <path d="M100 100 H157 A57 57 0 0 1 100 157 Z" fill="url(#blue)"/>
+              <path d="M100 100 V157 A57 57 0 0 1 43 100 Z" fill="url(#white)"/>
+              <text font-family="Clash Display, system-ui, sans-serif" font-weight="600" font-size="15.5" letter-spacing="3.2" fill="#F2F4F8">
+                <textPath href="#ringpath" startOffset="2%">FRESNO · CLOVIS · THE VALLEY · EST. BMW CCA ·</textPath>
+              </text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" data-panel>
+        <span class="eyebrow">BMW Car Club of America</span>
+        <h1>Central California.</h1>
+        <p>The valley's BMW chapter. Fresno, Clovis, and everyone who drives in for the morning.</p>
+        <a class="btn fill" href="#dates">Next meet</a><a class="btn" href="#join">Join</a>
+      </div>
+      <div class="panel" data-panel>
+        <span class="eyebrow">Every month</span>
+        <h2>Second Saturday. 8 AM.</h2>
+        <p>Kars &amp; Koffee at the Starbucks across from Woodward Park. Free. All makes welcome, no RSVP.</p>
+        <a class="btn fill" href="#dates" data-nextbtn>Next date</a>
+      </div>
+      <div class="panel" data-panel>
+        <span class="eyebrow">Every year</span>
+        <h2>Four dates on the calendar.</h2>
+        <p>Euro Car Show in June. Buttonwillow in spring. Legends of the Autobahn in August. The toy drive in December.</p>
+        <a class="btn" href="#dates">The season</a>
+      </div>
+      <div class="panel" data-panel>
+        <span class="eyebrow">Membership</span>
+        <h2>$58 a year.</h2>
+        <p>Roundel every month, track days, Monterey Car Week. Join through BMW CCA and pick Central California.</p>
+        <a class="btn fill" href="https://www.bmwcca.org/chapter/central-california-chapter" target="_blank" rel="noopener">Join through BMW CCA</a>
+      </div>
+
+      <div class="progress" aria-hidden="true">
+        <span data-step class="on">01</span><span data-step>02</span><span data-step>03</span><span data-step>04</span>
+      </div>
+      <div class="hint" aria-hidden="true" data-hint>Scroll</div>
+    </div>
+  </div>
+
+  <div class="after">
+
+    <section class="dates" id="dates">
+      <div class="wrap">
+        <span class="eyebrow">Next up</span>
+        <h2>The next three Saturdays we meet.</h2>
+        <div class="date-list" data-dates></div>
+      </div>
+    </section>
+
+    <section class="marquee" id="gallery" aria-label="Photos from chapter meets">
+      <div class="track">
+        <img src="../assets/img/gal-bmw-09.webp" width="800" height="534" loading="lazy" alt="Lime green BMW M3 at a chapter meet">
+        <img src="../assets/img/gal-bmw-01.webp" width="800" height="534" loading="lazy" alt="Black BMW E46 M3 from the rear">
+        <img src="../assets/img/gal-open-01.webp" width="800" height="534" loading="lazy" alt="Orange Lotus Elise at a meet">
+        <img src="../assets/img/gal-bmw-12.webp" width="800" height="534" loading="lazy" alt="Grey BMW M5 at a meet">
+        <img src="../assets/img/gal-bmw-14.webp" width="800" height="534" loading="lazy" alt="Classic BMW E30 convertible in December">
+        <img src="../assets/img/gal-open-08.webp" width="800" height="534" loading="lazy" alt="Blue Toyota Supra at a meet">
+        <img src="../assets/img/gal-bmw-09.webp" width="800" height="534" loading="lazy" alt="" aria-hidden="true">
+        <img src="../assets/img/gal-bmw-01.webp" width="800" height="534" loading="lazy" alt="" aria-hidden="true">
+        <img src="../assets/img/gal-open-01.webp" width="800" height="534" loading="lazy" alt="" aria-hidden="true">
+        <img src="../assets/img/gal-bmw-12.webp" width="800" height="534" loading="lazy" alt="" aria-hidden="true">
+        <img src="../assets/img/gal-bmw-14.webp" width="800" height="534" loading="lazy" alt="" aria-hidden="true">
+        <img src="../assets/img/gal-open-08.webp" width="800" height="534" loading="lazy" alt="" aria-hidden="true">
+      </div>
+      <div class="track rev" aria-hidden="true">
+        <img src="../assets/img/gal-bmw-05.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-open-03.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-bmw-10.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-bmw-16.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-open-06.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-bmw-02.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-bmw-05.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-open-03.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-bmw-10.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-bmw-16.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-open-06.webp" width="800" height="534" loading="lazy" alt="">
+        <img src="../assets/img/gal-bmw-02.webp" width="800" height="534" loading="lazy" alt="">
+      </div>
+    </section>
+
+    <section class="join" id="join">
+      <div class="wrap">
+        <div class="join-box grid">
+          <div>
+            <span class="eyebrow">BMW CCA membership</span>
+            <h2>You do not have to join to show up.</h2>
+            <p>Kars &amp; Koffee is free and open. Membership is what gets you on the track at Buttonwillow, into Legends of the Autobahn, and Roundel in the mailbox every month.</p>
+            <a class="btn fill" href="https://www.bmwcca.org/chapter/central-california-chapter" target="_blank" rel="noopener">Join through BMW CCA</a>
+          </div>
+          <div class="price">$58<small>per year, national dues</small></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span>BMW CCA Central California Chapter &nbsp;·&nbsp; PO Box 3285, Clovis, CA 93613</span>
+        <nav aria-label="Footer">
+          <a href="mailto:contact@mail.cencalbmwcca.com">Email</a>
+          <a href="https://instagram.com/bmwccacencal" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://m.facebook.com/groups/1497077221077118" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.bmwcca.org/chapter/central-california-chapter" target="_blank" rel="noopener">BMW CCA</a>
+        </nav>
+        <p class="note">Concept C of four. Unofficial design proposal by Rift Media for the chapter, not operated by BMW CCA. The emblem shown is a chapter-specific placeholder; final marks follow the BMW CCA brand licence. Photography by chapter members, credited @OG559Photo and @CG559Photo.</p>
+      </div>
+    </footer>
+
+  </div>
+</main>
+
+<nav class="cx" aria-label="Concept switcher">
+  <a href="index.html">Concepts</a>
+  <a href="magazine.html">A</a>
+  <a href="welcome.html">B</a>
+  <a href="kinetic.html" class="on" aria-current="page">C</a>
+  <a href="light.html">D</a>
+</nav>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stage=document.getElementById('stage');
+  var coin=document.querySelector('[data-coin]');
+  var spec=document.querySelector('[data-spec]');
+  var glow=document.querySelector('[data-glow]');
+  var big=document.querySelector('[data-bigtext]');
+  var hint=document.querySelector('[data-hint]');
+  var panels=Array.prototype.slice.call(document.querySelectorAll('[data-panel]'));
+  var steps=Array.prototype.slice.call(document.querySelectorAll('[data-step]'));
+  var N=panels.length;
+  var target=0,cur=0,raf=null;
+
+  function clamp(v,a,b){return v<a?a:v>b?b:v}
+
+  function measure(){
+    var r=stage.getBoundingClientRect();
+    var total=stage.offsetHeight-window.innerHeight;
+    target=clamp(-r.top/total,0,1);
+    if(!raf)raf=requestAnimationFrame(tick);
+  }
+
+  function apply(p){
+    // emblem: sits face-on through each panel, then flips 180deg in the gap before the next one,
+    // so the front and back ring text alternate. A small idle wobble keeps it alive while it dwells.
+    var seg=p*N, i=Math.min(N-1,Math.floor(seg)), t=seg-i;
+    var k=clamp((t-0.62)/0.38,0,1); k=k*k*(3-2*k);
+    if(i===N-1)k=0;
+    var ry=i*180+k*180+Math.sin(p*Math.PI*6)*5;
+    var rx=8+Math.sin(p*Math.PI*4)*7;
+    var sc=1-Math.sin(k*Math.PI)*0.12;
+    if(reduce){ry=i*180;rx=6;sc=1}
+    coin.style.transform='rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg) scale('+sc.toFixed(3)+')';
+    // specular sweep follows the rotation
+    var sx=Math.sin(ry*Math.PI/180)*70;
+    spec.style.transform='translateX('+sx.toFixed(1)+'%)';
+    // glow pulses when the coin is edge-on
+    var edge=Math.abs(Math.sin(ry*Math.PI/180));
+    glow.style.opacity=(0.55+edge*0.45).toFixed(2);
+    // outlined type drifts
+    big.style.transform='translate(-'+(p*22).toFixed(2)+'%,-50%)';
+    // panels: triangle window centred on each segment
+    var seg=p*N;
+    for(var i=0;i<N;i++){
+      var d=Math.abs(seg-(i+0.5));
+      var op=clamp(1-(d-0.18)*3.2,0,1);
+      if(i===0&&seg<0.5)op=1;
+      if(i===N-1&&seg>N-0.5)op=1;
+      var ty=(seg-(i+0.5))*-28;
+      panels[i].style.opacity=op.toFixed(3);
+      panels[i].style.transform=(window.innerWidth>=900?'translateY(calc(-50% + '+ty.toFixed(1)+'px))':'translateY('+(24+ty).toFixed(1)+'px)');
+      panels[i].classList.toggle('on',op>0.5);
+      panels[i].setAttribute('aria-hidden',op>0.5?'false':'true');
+    }
+    var idx=clamp(Math.floor(seg),0,N-1);
+    steps.forEach(function(s,i){s.classList.toggle('on',i===idx)});
+    hint.style.opacity=p<0.04?1:0;
+  }
+
+  function tick(){
+    cur+= (target-cur)*(reduce?1:0.14);
+    if(Math.abs(target-cur)<0.0004)cur=target;
+    apply(cur);
+    raf=(cur!==target)?requestAnimationFrame(tick):null;
+  }
+
+  window.addEventListener('scroll',measure,{passive:true});
+  window.addEventListener('resize',measure);
+  measure();apply(0);
+
+  /* next dates */
+  function nextKKs(n){var out=[],now=new Date(),c=new Date(now.getFullYear(),now.getMonth(),1);
+    for(var i=0;i<14&&out.length<n;i++){var f=new Date(c.getFullYear(),c.getMonth(),1),o=(6-f.getDay()+7)%7,
+      d=new Date(c.getFullYear(),c.getMonth(),1+o+7,8,0,0),e=new Date(d);e.setHours(12,0,0,0);
+      if(e>now)out.push(d);c.setMonth(c.getMonth()+1)}return out}
+  var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var pad=function(n){return n<10?'0'+n:''+n};
+  var st=function(x){return x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(x.getHours())+pad(x.getMinutes())+'00'};
+  var list=document.querySelector('[data-dates]');
+  var ds=nextKKs(3);
+  list.innerHTML=ds.map(function(d){
+    var e=new Date(d);e.setHours(12,0,0,0);
+    var g='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Kars & Koffee - BMW CCA Cen Cal')+'&dates='+st(d)+'/'+st(e)+'&location='+encodeURIComponent('9423 N Fort Washington Rd, Fresno, CA 93730');
+    return '<div class="date"><div class="d"><small>'+M[d.getMonth()]+'</small>'+d.getDate()+'</div>'+
+      '<div class="t"><b>Kars &amp; Koffee</b><span>Saturday, 8 AM to noon · Starbucks across from Woodward Park</span></div>'+
+      '<a href="'+g+'" target="_blank" rel="noopener">Add to calendar</a></div>';
+  }).join('');
+  var nb=document.querySelector('[data-nextbtn]');
+  if(nb&&ds[0])nb.textContent='Next date, '+M[ds[0].getMonth()]+' '+ds[0].getDate();
+})();
+</script>
+</body>
+</html>
