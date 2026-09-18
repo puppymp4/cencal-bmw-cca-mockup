@@ -103,21 +103,13 @@
       '&dates=' + stamp(ev.date) + '/' + stamp(ev.endDate) + '&details=' + encodeURIComponent(ev.blurb || '') +
       '&location=' + encodeURIComponent((ev.venue ? ev.venue + ', ' : '') + (ev.address || ''));
   }
-  function icsHref(ev) {
-    var lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//BMW CCA Cen Cal Chapter//EN','CALSCALE:GREGORIAN','BEGIN:VEVENT',
-      'UID:' + ev.id + '-' + stamp(ev.date) + '@cencalbmwcca.com','DTSTAMP:' + stamp(new Date()),'DTSTART:' + stamp(ev.date),'DTEND:' + stamp(ev.endDate),
-      'SUMMARY:' + ev.title + ' - BMW CCA Cen Cal',
-      'LOCATION:' + ((ev.venue ? ev.venue + ', ' : '') + (ev.address || '')).replace(/,/g, '\\,'),
-      'DESCRIPTION:' + String(ev.blurb || '').replace(/,/g, '\\,'),'END:VEVENT','END:VCALENDAR'];
-    return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(lines.join('\r\n'));
-  }
   function mapUrl(ev) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent((ev.venue ? ev.venue + ' ' : '') + (ev.address || '')); }
 
   /* ---------------- render ---------------- */
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 
   function eventRow(ev) {
-    var d = ev.date, slug = ev.id + '-' + d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    var d = ev.date;
     return '<article class="event-row">' +
       '<div class="event-date" aria-hidden="true"><div class="event-date__mon">' + MON[d.getMonth()] + '</div><div class="event-date__day">' + d.getDate() + '</div><div class="event-date__yr">' + d.getFullYear() + '</div></div>' +
       '<div class="event-body"><h3>' + esc(ev.title) + '</h3>' +
@@ -126,8 +118,7 @@
         '<div class="event-meta" style="margin-top:10px">' + (ev.open ? '<span class="badge badge--recurring">' + esc(ev.open) + '</span>' : '') + (ev.cost ? '<span class="badge">' + esc(ev.cost) + '</span>' : '') + '</div>' +
       '</div>' +
       '<div class="event-actions">' +
-        '<a class="pill sm" href="' + googleCalUrl(ev) + '" target="_blank" rel="noopener">Add to Google</a>' +
-        '<a class="pill sm" href="' + icsHref(ev) + '" download="' + slug + '.ics">Download .ics</a>' +
+        '<a class="pill sm" href="' + googleCalUrl(ev) + '" target="_blank" rel="noopener">Add to calendar</a>' +
         '<a class="pill sm" href="' + mapUrl(ev) + '" target="_blank" rel="noopener">Directions</a>' +
       '</div></article>';
   }
