@@ -64,8 +64,10 @@ section { padding: 96px 0 0; }
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 44px; padding: 0 20px; border-radius: 999px;
   border: 1px solid rgba(255,255,255,.35); font-size: 14px; font-weight: 500;
+  background: transparent; color: var(--ink); cursor: pointer; -webkit-tap-highlight-color: transparent;
   transition: background .2s, color .2s, border-color .2s;
 }
+a.pill:not([href]) { cursor: default; }
 .pill:hover { background: #fff; color: #000; border-color: #fff; }
 .pill.fill { background: #fff; color: #000; border-color: #fff; }
 .pill.fill:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
@@ -167,7 +169,13 @@ section { padding: 96px 0 0; }
 .cal-menu a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: 6px; font-size: 14px; font-weight: 500; color: var(--ink); white-space: nowrap; }
 .cal-menu a::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--blue-text); flex: none; }
 .cal-menu a:hover, .cal-menu a:focus-visible { background: rgba(255,255,255,.08); }
-.cal [data-cal-toggle][aria-expanded="true"] { background: #fff; color: #000; border-color: #fff; }
+.cal [data-cal-toggle] {
+  background: var(--blue); border-color: var(--blue); color: #fff; font-weight: 700; font-size: 14px;
+  touch-action: manipulation; transition: none;
+}
+.cal [data-cal-toggle] svg { flex: none; }
+.cal [data-cal-toggle]:hover, .cal [data-cal-toggle][aria-expanded="true"] { background: #fff; color: #000; border-color: #fff; }
+.cal-menu a { touch-action: manipulation; }
 
 /* ---------- image cards (three ways) ---------- */
 .way-grid { display: grid; gap: 14px; }

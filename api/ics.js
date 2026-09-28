@@ -2,16 +2,16 @@
 // Serves a single-event .ics as text/calendar so iOS and macOS open it straight in Calendar.
 // Times are Pacific (America/Los_Angeles) with an embedded VTIMEZONE so DST is handled.
 
-module.exports = function (req, res) {
-  var q = req.query || {};
+export const config = { runtime: "edge" };
+
+export default function handler(request) {
+  var q = Object.fromEntries(new URL(request.url).searchParams);
   var clean = function (s) { return String(s == null ? '' : s).replace(/[\r\n]+/g, ' ').trim().slice(0, 400); };
   var esc = function (s) { return clean(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,'); };
   var stampOk = function (s) { return /^\d{8}T\d{6}$/.test(String(s || '')); };
 
   if (!stampOk(q.start) || !stampOk(q.end)) {
-    res.statusCode = 400;
-    res.setHeader('Content-Type', 'text/plain');
-    return res.end('start and end must look like 20261010T080000');
+    return new Response("start and end must look like 20261010T080000", { status: 400, headers: { "Content-Type": "text/plain" } });
   }
 
   var title = esc(q.title || 'BMW CCA Cen Cal');
@@ -54,9 +54,12 @@ module.exports = function (req, res) {
     'END:VCALENDAR'
   ].filter(Boolean);
 
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/calendar; charset=utf-8');
-  res.setHeader('Content-Disposition', 'inline; filename="' + file + '"');
-  res.setHeader('Cache-Control', 'no-store');
-  res.end(lines.join('\r\n'));
-};
+  return new Response(lines.join("\r\n"), {
+    status: 200,
+    headers: {
+      "Content-Type": "text/calendar; charset=utf-8",
+      "Content-Disposition": "inline; filename=\"" + file + "\"",
+      "Cache-Control": "public, max-age=86400"
+    }
+  });
+}

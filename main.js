@@ -121,7 +121,7 @@
   function calMenu(ev, cls) {
     var id = 'cal-' + (++calSeq);
     return '<div class="cal' + (cls ? ' ' + cls : '') + '">' +
-      '<button class="pill sm" type="button" data-cal-toggle aria-haspopup="menu" aria-expanded="false" aria-controls="' + id + '">Add to calendar</button>' +
+      '<button class="pill sm" type="button" data-cal-toggle aria-haspopup="menu" aria-expanded="false" aria-controls="' + id + '"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Add to calendar</button>' +
       '<div class="cal-menu" id="' + id + '" role="menu" hidden>' +
         '<a role="menuitem" href="' + icsUrl(ev) + '">Apple Calendar</a>' +
         '<a role="menuitem" href="' + googleCalUrl(ev) + '" target="_blank" rel="noopener">Google Calendar</a>' +
@@ -199,7 +199,7 @@
     var rules = document.querySelectorAll('[data-rule-text]');
     if (!lists.length && !annual && !inline) return;
 
-    fetch('/events.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (data) {
+    fetch('/events.json').then(function (r) { return r.json(); }).then(function (data) {
       var upcoming = buildUpcoming(data, 12);
       lists.forEach(function (el) { renderList(el, upcoming.slice(0, parseInt(el.getAttribute('data-events'), 10) || upcoming.length)); });
       if (annual) annual.innerHTML = (data.annual || []).map(annualCard).join('');
