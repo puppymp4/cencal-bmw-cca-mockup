@@ -335,6 +335,8 @@ a.pill:not([href]) { cursor: default; }
 .footer-bottom { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line-2); display: flex; flex-wrap: wrap; gap: 8px 32px; justify-content: space-between; font-size: 13px; color: var(--ink-3); }
 .footer-bottom a { color: var(--ink-3); min-height: 0; }
 .footer-bottom a:hover { color: var(--ink); }
+.footer-bottom .credit a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 12px 2px; margin: -12px 0; }
+.footer-bottom .credit a:hover { color: var(--ink); }
 
 /* ---------- reveal ---------- */
 .reveal { opacity: 0; transform: translateY(16px); }
